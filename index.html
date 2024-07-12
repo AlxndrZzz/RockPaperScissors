@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME</title>
+</head>
+<body>
+    <h1>Game Rock Paper Scissors</h1>
+    <script>
+        // Computer choice
+        function getComputerChoice() {
+            let compChoice = Math.random();
+            let choiceComp;
+
+            if (compChoice < 0.33) {
+                choiceComp = 'rock';
+            } else if (compChoice > 0.33 && compChoice < 0.66) {
+                choiceComp = 'paper';
+            } else {
+                choiceComp = 'scissors';
+            }
+
+            return choiceComp;
+        }
+
+        // Player choice
+        function getHumanChoice() {
+            let humanChoice = prompt('Input your choice: R/P/S');
+            let choiceHuman;
+
+            if (humanChoice === 'R') {
+                choiceHuman = 'rock';
+            } else if (humanChoice === 'P') {
+                choiceHuman = 'paper';
+            } else if (humanChoice === 'S') {
+                choiceHuman = 'scissors';
+            }
+
+            return choiceHuman;
+        }
+
+        // One round with declare winner
+        function playRound(humanSelection, computerSelection) {
+            let roundResultWin;
+            let roundResultLose;
+            let roundResultDraw;
+
+            if (humanSelection === 'rock' && computerSelection === 'rock') {
+                return roundResultDraw = 'It is a DRAW!';
+            } else if (humanSelection === 'rock' && computerSelection === 'paper') {
+                return roundResultLose = 'You LOSE!';
+            } else if (humanSelection === 'rock' && computerSelection === 'scissors') {
+                return roundResultWin = 'You WIN!';
+            } else if (humanSelection === 'paper' && computerSelection === 'rock') {
+                return roundResultWin = 'You WIN!';
+            } else if (humanSelection === 'paper' && computerSelection === 'paper') {
+                return roundResultDraw = 'It is a DRAW!';
+            } else if (humanSelection === 'paper' && computerSelection === 'scissors') {
+                return roundResultLose = 'You LOSE!';
+            } else if (humanSelection === 'scissors' && computerSelection === 'rock') {
+                return roundResultLose = 'You LOSE!';
+            } else if (humanSelection === 'scissors' && computerSelection === 'paper') {
+                return roundResultWin = 'You WIN!';
+            } else if (humanSelection === 'scissors' && computerSelection === 'scissors') {
+                return roundResultDraw = 'It is a DRAW!';
+            }
+        }
+
+        // Game of 5 rounds to determine the winner
+        function playGame() {
+            var humanScore = 0;
+            var computerScore = 0;
+            let whoIsWinner;
+
+            // Loop of 5 rounds
+            for (let i = 0; i < 5; i++) {
+                const playerSelection = getHumanChoice();
+                const compSelection = getComputerChoice();
+                let result = playRound(playerSelection, compSelection);
+
+                // Condition to increase or decrease score
+                if (result === 'You WIN!') {
+                    humanScore++;
+                    console.log(result + ' Your ' + playerSelection.toUpperCase() + ' beats ' + compSelection.toUpperCase());
+                } else if (result === 'You LOSE!') {
+                    computerScore++;
+                    console.log(result + ' Computer ' + compSelection.toUpperCase() + ' beats ' + playerSelection.toUpperCase());
+                } else {
+                    console.log(result + ' Your ' + playerSelection.toUpperCase() + ' can not beat ' + compSelection.toUpperCase());
+                }
+            }
+
+            // Condition to declare a winner, looser or a draw depends on score
+            if (humanScore > computerScore) {
+                whoIsWinner = 'YOU are a WINNER!';
+            } else if (humanScore < computerScore) {
+                whoIsWinner = 'COMPUTER is a WINNER!';
+            } else {
+                whoIsWinner = 'It is a DRAW! You are BOTH WINNERS!';
+            }
+
+            // Show total score and status in the end of the game
+            return console.log('Your score is ' + humanScore + ' and Comp score is ' + computerScore + ' - ' + whoIsWinner);
+        }
+
+        // Start of the game
+        playGame();
+    </script>
+</body>
+</html>
