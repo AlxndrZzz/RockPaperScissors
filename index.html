@@ -7,6 +7,17 @@
 </head>
 <body>
     <h1>Game Rock Paper Scissors</h1>
+    <h2>To START the game REFRESH the PAGE</h2>
+    <h2>The game has 5 rounds. 
+        <br>Each round choose Rock, Scissors or Paper. 
+        <br>To select, enter the capital letter R, P, S. 
+        <br>At the end of the 5th round you will see the result of the game. 
+        <br>Have a good game!</h2>
+        <br>В игре 5 раундов. 
+        <br>Каждый раунд выберите Камень, Ножницы или Бумагу. 
+        <br>Для выбора введите заглавную букву R, P, S. 
+        <br>В конце 5 раунда вы увидите результат игры. 
+        <br>Приятной игры!
     <script>
         // Computer choice
         function getComputerChoice() {
@@ -41,28 +52,64 @@
         }
 
         // One round with declare winner
+        // Console version.
+        // function playRound(humanSelection, computerSelection) {
+        //     let roundResultWin;
+        //     let roundResultLose;
+        //     let roundResultDraw;
+
+        //     if (humanSelection === 'rock' && computerSelection === 'rock') {
+        //         return roundResultDraw = 'It is a DRAW!';
+        //     } else if (humanSelection === 'rock' && computerSelection === 'paper') {
+        //         return roundResultLose = 'You LOSE!';
+        //     } else if (humanSelection === 'rock' && computerSelection === 'scissors') {
+        //         return roundResultWin = 'You WIN!';
+        //     } else if (humanSelection === 'paper' && computerSelection === 'rock') {
+        //         return roundResultWin = 'You WIN!';
+        //     } else if (humanSelection === 'paper' && computerSelection === 'paper') {
+        //         return roundResultDraw = 'It is a DRAW!';
+        //     } else if (humanSelection === 'paper' && computerSelection === 'scissors') {
+        //         return roundResultLose = 'You LOSE!';
+        //     } else if (humanSelection === 'scissors' && computerSelection === 'rock') {
+        //         return roundResultLose = 'You LOSE!';
+        //     } else if (humanSelection === 'scissors' && computerSelection === 'paper') {
+        //         return roundResultWin = 'You WIN!';
+        //     } else if (humanSelection === 'scissors' && computerSelection === 'scissors') {
+        //         return roundResultDraw = 'It is a DRAW!';
+        //     }
+        // }
+
         function playRound(humanSelection, computerSelection) {
             let roundResultWin;
             let roundResultLose;
             let roundResultDraw;
 
             if (humanSelection === 'rock' && computerSelection === 'rock') {
+                // alert('It is a DRAW! Try next choice.');
                 return roundResultDraw = 'It is a DRAW!';
             } else if (humanSelection === 'rock' && computerSelection === 'paper') {
+                // alert('You LOSE this round! ' + 'Computer ' + computerSelection.toUpperCase() + ' beats ' + humanSelection.toUpperCase() + '. Try next choice.');
                 return roundResultLose = 'You LOSE!';
             } else if (humanSelection === 'rock' && computerSelection === 'scissors') {
+                // alert('You WIN! Your ' + humanSelection.toUpperCase() + ' beats ' + computerSelection.toUpperCase() + '. Make a next choice.');
                 return roundResultWin = 'You WIN!';
             } else if (humanSelection === 'paper' && computerSelection === 'rock') {
+                // alert('You WIN! Your ' + humanSelection.toUpperCase() + ' beats ' + computerSelection.toUpperCase() + '. Make a next choice.');
                 return roundResultWin = 'You WIN!';
             } else if (humanSelection === 'paper' && computerSelection === 'paper') {
+                // alert('It is a DRAW! Try next choice.');
                 return roundResultDraw = 'It is a DRAW!';
             } else if (humanSelection === 'paper' && computerSelection === 'scissors') {
+                // alert('You LOSE this round! ' + 'Computer ' + computerSelection.toUpperCase() + ' beats ' + humanSelection.toUpperCase() + '. Try next choice.');
                 return roundResultLose = 'You LOSE!';
             } else if (humanSelection === 'scissors' && computerSelection === 'rock') {
+                // alert('You LOSE this round! ' + 'Computer ' + computerSelection.toUpperCase() + ' beats ' + humanSelection.toUpperCase() + '. Try next choice.');
                 return roundResultLose = 'You LOSE!';
             } else if (humanSelection === 'scissors' && computerSelection === 'paper') {
+                // alert('You WIN! Your ' + humanSelection.toUpperCase() + ' beats ' + computerSelection.toUpperCase() + '. Make a next choice.');
                 return roundResultWin = 'You WIN!';
             } else if (humanSelection === 'scissors' && computerSelection === 'scissors') {
+                // alert('It is a DRAW! Try next choice.');
                 return roundResultDraw = 'It is a DRAW!';
             }
         }
@@ -74,7 +121,7 @@
             let whoIsWinner;
 
             // Loop of 5 rounds
-            for (let i = 0; i < 5; i++) {
+            for (let i = 1; i <= 5; i++) {
                 const playerSelection = getHumanChoice();
                 const compSelection = getComputerChoice();
                 let result = playRound(playerSelection, compSelection);
@@ -82,12 +129,12 @@
                 // Condition to increase or decrease score
                 if (result === 'You WIN!') {
                     humanScore++;
-                    console.log(result + ' Your ' + playerSelection.toUpperCase() + ' beats ' + compSelection.toUpperCase());
+                    alert(result + ' Your ' + playerSelection.toUpperCase() + ' beats ' + compSelection.toUpperCase() + '. Round ' + i + '/5');
                 } else if (result === 'You LOSE!') {
                     computerScore++;
-                    console.log(result + ' Computer ' + compSelection.toUpperCase() + ' beats ' + playerSelection.toUpperCase());
+                    alert(result + ' Computer ' + compSelection.toUpperCase() + ' beats ' + playerSelection.toUpperCase() + '. Round ' + i + '/5');
                 } else {
-                    console.log(result + ' Your ' + playerSelection.toUpperCase() + ' can not beat ' + compSelection.toUpperCase());
+                    alert(result + ' Your ' + playerSelection.toUpperCase() + ' can not beat ' + compSelection.toUpperCase() + '. Round ' + i + '/5');
                 }
             }
 
@@ -101,7 +148,10 @@
             }
 
             // Show total score and status in the end of the game
-            return console.log('Your score is ' + humanScore + ' and Comp score is ' + computerScore + ' - ' + whoIsWinner);
+
+            // Console version. Uncomment to activate and comment below string.
+            // return console.log('Your score is ' + humanScore + ' and Comp score is ' + computerScore + ' - ' + whoIsWinner);
+            return alert('Your score is ' + humanScore + ' and Comp score is ' + computerScore + ' - ' + whoIsWinner);
         }
 
         // Start of the game
